@@ -190,7 +190,7 @@ public class EffectManager : MonoBehaviour
 		GameObject matDropped = effect.matProduce[Random.Range(0, effect.matProduce.Count)];
 		print(target.name + " dropped " + matDropped.name);
 		Vector3 spawnPos = new Vector3(target.transform.position.x, target.transform.position.y + 0.7f, target.transform.position.z);
-		GameObject droppedMat = Instantiate(matDropped, spawnPos, Quaternion.identity);
+		GameObject droppedMat = Instantiate(matDropped, spawnPos, Random.rotation);
 		droppedMat.GetComponent<Rigidbody>().AddForce(
 			new Vector3(Random.Range(-droppedMat_flyAmount, droppedMat_flyAmount),
 			3,

@@ -554,7 +554,7 @@ MonoBehaviour:
   player: {fileID: 1708728301}
   goal: {fileID: 1614443459}
   enemy: {fileID: 675428768}
-  on: 1
+  on: 0
 --- !u!4 &112028153
 Transform:
   m_ObjectHideFlags: 0
@@ -2189,7 +2189,7 @@ GameObject:
   - component: {fileID: 675428776}
   - component: {fileID: 675428769}
   - component: {fileID: 675428774}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: EnemyTest
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2562,7 +2562,7 @@ GameObject:
   - component: {fileID: 944477390}
   - component: {fileID: 944477392}
   - component: {fileID: 944477391}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: DropMeter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2899,6 +2899,14 @@ PrefabInstance:
     - target: {fileID: 1878301129661876285, guid: 15fe43c742ecdab4b9403836ac8970ae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800329985359826309, guid: 15fe43c742ecdab4b9403836ac8970ae, type: 3}
+      propertyPath: spd
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800329985359826309, guid: 15fe43c742ecdab4b9403836ac8970ae, type: 3}
+      propertyPath: mass
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5800329985359826309, guid: 15fe43c742ecdab4b9403836ac8970ae, type: 3}
       propertyPath: matCastType
@@ -3976,7 +3984,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1814695225
 Transform:
   m_ObjectHideFlags: 0
@@ -5177,6 +5185,10 @@ PrefabInstance:
     - target: {fileID: 8612859531622332435, guid: 2ebfc20b2017a02408dbc6dfca6e4bea, type: 3}
       propertyPath: m_Name
       value: Target Indicator
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612859531622332435, guid: 2ebfc20b2017a02408dbc6dfca6e4bea, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ebfc20b2017a02408dbc6dfca6e4bea, type: 3}
