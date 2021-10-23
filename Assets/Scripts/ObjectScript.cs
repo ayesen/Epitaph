@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class ObjectScript : MonoBehaviour
 {
+	[Header("Move Object")]
 	Rigidbody rb;
 	public float flyAmount;
 	public GameObject enemy;
 	public float sinkSpd;
 	public bool sink;
 
+	[Header("Object Inspection")]
+	public GameObject player;
+	private Material defaultMat;
+	public Material highLightMat;
+	public float inspectionRange;
+	private MeshRenderer mr;
+	[TextArea]
+	public string objectDescription;
+
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody>();
+		mr = GetComponent<MeshRenderer>();
+		defaultMat = mr.material;
 	}
 
 	private void Update()
@@ -21,15 +33,31 @@ public class ObjectScript : MonoBehaviour
 		{
 			Sinking();
 		}
+		if (player != null && Vector3.Distance(player.transform.position, transform.position) < inspectionRange)
+		{
+			mr.material = highLightMat;
+			if (Input.GetKeyDown(KeyCode.E) &&
+				player.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("testIdle"))
+			{
+				ObjectInspectorManagerScript.me.ShowText(objectDescription);
+			}
+		}
+		else
+		{
+			mr.material = defaultMat;
+		}
 	}
 
 	private void OnCollisionEnter(Collision collision)
 	{
-		Vector3 dir = transform.position - enemy.transform.position;
-		if (collision.gameObject.CompareTag("Enemy"))
+		if (enemy != null)
 		{
-			rb.AddForce(dir.normalized * flyAmount, ForceMode.Impulse);
-			StartCoroutine(StartSink());
+			Vector3 dir = transform.position - enemy.transform.position;
+			if (collision.gameObject.CompareTag("Enemy"))
+			{
+				rb.AddForce(dir.normalized * flyAmount, ForceMode.Impulse);
+				StartCoroutine(StartSink());
+			}
 		}
 	}
 
