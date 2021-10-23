@@ -27,7 +27,7 @@
 	// projectile doesn't use gravity for now
 	
 // features
-	// collision detection
+	// xcollision detection
 	// xprojectile
 		// xhave place to insert effect codes
 	// xaoe
@@ -48,14 +48,14 @@
 	// xget current mat in hit detection and call effect from effect manager based on the mat's effects
 	// xdamage
 		// xone time damage
-		// dot
+		// xdot
 	// xctrl
 		// xwalkability
 		// xatackability
 		// foece move
 	// xrecovery
 		// xone time heal
-		// hot
+		// xhot
 	// xsupply
 		// xdrop mats
 
@@ -67,10 +67,26 @@
 	// knock back enemy
 	// xknock back player
 
-// 10/2221
+// 10/22/21
 // combat refine
 	// xwindup and backswing
-	// drop gradually
-		// drop meter
-		// ui
-	
+	// xdrop gradually
+		// xdrop meter
+		// xui
+
+// 10/23/21
+// combat refine
+	// drop
+	// deal damage
+		// flash pie
+	// damage avoidence
+		// gp
+		// knock back
+// cam
+	// smoothen
+	// hide wall
+// xobject inspection
+	// xtext prompt
+// xobjects in level solution
+	// xenemy knocks back objects
+	// xobjects disappear
