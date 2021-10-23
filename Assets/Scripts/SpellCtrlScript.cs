@@ -9,8 +9,8 @@ public class SpellCtrlScript : MonoBehaviour
 	private Animator anim;
 
 	[Header("PROJECTILE")]
-    public Transform spellSpawnLoc;
-    public GameObject spell_proj_prefab;
+	public Transform spellSpawnLoc;
+	public GameObject spell_proj_prefab;
 	public float spellSpd;
 
 	[Header("AOE")]
@@ -30,7 +30,7 @@ public class SpellCtrlScript : MonoBehaviour
 
 	[Header("Self")]
 	public GameObject selfIndicator;
-	
+
 	public enum CastType
 	{
 		none,
@@ -49,7 +49,7 @@ public class SpellCtrlScript : MonoBehaviour
 		//pieRangeIndicator.GetComponent<SpriteRenderer>().color = aoeOgColor;
 		anim = GetComponent<Animator>();
 	}
-	
+
 	private void Update()
 	{
 		if (PlayerScript.me.currentMat != null && anim.GetCurrentAnimatorStateInfo(0).IsName("testIdle"))
@@ -63,7 +63,7 @@ public class SpellCtrlScript : MonoBehaviour
 				targetIndicator.SetActive(false);
 				selfIndicator.SetActive(false);
 
-				if (Input.GetMouseButtonDown(0))
+				if (Input.GetMouseButtonDown(0) && ps.ConsumeMats())
 				{
 					anim.Play("testWindup");
 				}
@@ -101,7 +101,7 @@ public class SpellCtrlScript : MonoBehaviour
 				}
 
 				// cast the spell
-				if (Input.GetMouseButtonDown(0))
+				if (Input.GetMouseButtonDown(0) && ps.ConsumeMats())
 				{
 					//aoeRangeIndicator.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
 					//StartCoroutine(ChangeToDefaultColor(aoeRangeIndicator));
@@ -119,7 +119,7 @@ public class SpellCtrlScript : MonoBehaviour
 				Quaternion targetAngle = Quaternion.Euler(0, 0, pieAngle / 2 - 180f);
 				pieRangeIndicator.GetComponent<RectTransform>().localRotation = targetAngle;
 
-				if (Input.GetMouseButtonDown(0))
+				if (Input.GetMouseButtonDown(0) && ps.ConsumeMats())
 				{
 					SpawnSpell_pie();
 				}
@@ -134,7 +134,7 @@ public class SpellCtrlScript : MonoBehaviour
 				if (MouseManager.me.enemySelected != null)
 				{
 					targetIndicator.SetActive(true);
-					if (Input.GetMouseButtonDown(0))
+					if (Input.GetMouseButtonDown(0) && ps.ConsumeMats())
 					{
 						targetIndicator.GetComponent<Light>().color = new Color(0, 159, 179, 1);
 						//! insert effect codes here
@@ -156,7 +156,7 @@ public class SpellCtrlScript : MonoBehaviour
 				targetIndicator.SetActive(false);
 				selfIndicator.SetActive(true);
 
-				if (Input.GetMouseButtonDown(0))
+				if (Input.GetMouseButtonDown(0) && ps.ConsumeMats())
 				{
 					selfIndicator.GetComponent<Light>().color = new Color(0, 159, 179, 1);
 				}
@@ -176,7 +176,7 @@ public class SpellCtrlScript : MonoBehaviour
 			}
 		}
 
-		
+
 	}
 
 	private IEnumerator ChangeToDefaultColor(GameObject indicator)
