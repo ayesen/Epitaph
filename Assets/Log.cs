@@ -76,15 +76,16 @@
 
 // 10/23/21
 // combat refine
+	// xchange to windup state when moving and pressed atk
 	// drop
+		// xdrop debugging
+		// drop refining
 	// deal damage
 		// flash pie
+		// refining
 	// damage avoidence
 		// gp
 		// knock back
-// cam
-	// smoothen
-	// hide wall
 // xobject inspection
 	// xtext prompt
 // xobjects in level solution

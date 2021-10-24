@@ -52,7 +52,7 @@ public class SpellCtrlScript : MonoBehaviour
 
 	private void Update()
 	{
-		if (PlayerScript.me.currentMat != null && anim.GetCurrentAnimatorStateInfo(0).IsName("testIdle"))
+		if (PlayerScript.me.currentMat != null && (anim.GetCurrentAnimatorStateInfo(0).IsName("testIdle") || anim.GetCurrentAnimatorStateInfo(0).IsName("testWalk")))
 		{
 			currentCastType = PlayerScript.me.currentMat.GetComponent<MatScript>().matCastType;
 			// if cast type projectile
@@ -169,7 +169,7 @@ public class SpellCtrlScript : MonoBehaviour
 			}
 			else
 			{
-				Debug.Log("I am none");
+				//Debug.Log("I am none");
 				aoeRangeIndicator.SetActive(false);
 				pieRangeIndicator.SetActive(false);
 				targetIndicator.SetActive(false);

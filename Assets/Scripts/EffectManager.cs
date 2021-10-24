@@ -42,7 +42,7 @@ public class EffectManager : MonoBehaviour
 	{
 		if (target.tag == "Enemy" && effect.damageAmount > 0)
 		{
-			print("dealt " + effect.damageAmount + " damage to " + target.name);
+			//print("dealt " + effect.damageAmount + " damage to " + target.name);
 			enemyScript.LoseHealth(effect.damageAmount);
 		}
 
@@ -56,7 +56,7 @@ public class EffectManager : MonoBehaviour
 	{
 		if (effect.myCtrlType != CtrlTypes.none)
 		{
-			print(target.name + " will be in " + effect.myCtrlType.ToString() + " state for " + effect.ctrl_duration + "s");
+			//print(target.name + " will be in " + effect.myCtrlType.ToString() + " state for " + effect.ctrl_duration + "s");
 			if (effect.myCtrlType == CtrlTypes.forceMove)
 			{
 				// knock back based on amount
@@ -99,7 +99,7 @@ public class EffectManager : MonoBehaviour
 
 	public void Heal(GameObject target, EffectStruct effect)
 	{
-		print("I am debugging healing");
+		//print("I am debugging healing");
 		if (target.GetComponent<PlayerScript>() != null && effect.healAmount > 0)
 		{
 			print("healed " + target.name + " " + effect.healAmount);
@@ -140,7 +140,6 @@ public class EffectManager : MonoBehaviour
 		float timer = 0f;
 		while (timer < duration)
 		{
-			print(timer);
 			timer += Time.deltaTime;
 			yield return null;
 		}
@@ -188,7 +187,7 @@ public class EffectManager : MonoBehaviour
 	private void SpawnMat(GameObject target, EffectStruct effect)
 	{
 		GameObject matDropped = effect.matProduce[Random.Range(0, effect.matProduce.Count)];
-		print(target.name + " dropped " + matDropped.name);
+		//print(target.name + " dropped " + matDropped.name);
 		Vector3 spawnPos = new Vector3(target.transform.position.x, target.transform.position.y + 0.7f, target.transform.position.z);
 		GameObject droppedMat = Instantiate(matDropped, spawnPos, Random.rotation);
 		droppedMat.GetComponent<Rigidbody>().AddForce(

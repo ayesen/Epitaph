@@ -19,7 +19,7 @@ public class PlayerScript : MonoBehaviour
 	//Temp inventory
 	[Header("Temp Inventory")]
 	public List<InventoryDict> tempInventory;
-	public List<GameObject> choosentMats;
+	public List<GameObject> chosenMats;
 
 	private void Awake()
 	{
@@ -30,89 +30,55 @@ public class PlayerScript : MonoBehaviour
 	private void Update()
 	{
 		// simple movement for now
-		//if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
-		//{
-		//	transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - spd * Time.deltaTime);
-		//}
-		//else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
-		//{
-		//	transform.position = new Vector3(transform.position.x - spd * Time.deltaTime, transform.position.y, transform.position.z);
-		//}
-		//else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
-		//{
-		//	transform.position = new Vector3(transform.position.x + spd * Time.deltaTime, transform.position.y, transform.position.z);
-		//}
-		//else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
-		//{
-		//	transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + spd * Time.deltaTime);
-		//}
-		//else if (Input.GetKey(KeyCode.W))
-		//{
-		//	transform.position = new Vector3(transform.position.x - Mathf.Sqrt(Mathf.Pow(spd, 2) / 2) * Time.deltaTime, transform.position.y, transform.position.z - Mathf.Sqrt(Mathf.Pow(spd, 2) / 2) * Time.deltaTime);
-		//}
-		//else if (Input.GetKey(KeyCode.S))
-		//{
-		//	transform.position = new Vector3(transform.position.x + Mathf.Sqrt(Mathf.Pow(spd, 2) / 2) * Time.deltaTime, transform.position.y, transform.position.z + Mathf.Sqrt(Mathf.Pow(spd, 2) / 2) * Time.deltaTime);
-		//}
-		//else if (Input.GetKey(KeyCode.A))
-		//{
-		//	transform.position = new Vector3(transform.position.x + Mathf.Sqrt(Mathf.Pow(spd, 2) / 2) * Time.deltaTime, transform.position.y, transform.position.z - Mathf.Sqrt(Mathf.Pow(spd, 2) / 2) * Time.deltaTime);
-		//}
-		//else if (Input.GetKey(KeyCode.D))
-		//{
-		//	transform.position = new Vector3(transform.position.x - Mathf.Sqrt(Mathf.Pow(spd, 2) / 2) * Time.deltaTime, transform.position.y, transform.position.z + Mathf.Sqrt(Mathf.Pow(spd, 2) / 2) * Time.deltaTime);
-		//}
-		//if (anim.GetCurrentAnimatorStateInfo(0).IsName("testIdle"))
+		if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) &&
+			anim.GetCurrentAnimatorStateInfo(0).IsName("testIdle")) // if in idel state and a movement key pressed, go into walk state
 		{
-			if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) &&
-				anim.GetCurrentAnimatorStateInfo(0).IsName("testIdle"))
+			anim.Play("testWalk");
+		}
+		if (anim.GetCurrentAnimatorStateInfo(0).IsName("testWalk")) // if in walk state, walk
+		{
+			// walking diagonally
+			if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
 			{
-				anim.Play("testWalk");
+				transform.position = new Vector3(transform.position.x - Mathf.Sqrt(Mathf.Pow(spd, 2) / 2) * Time.deltaTime, transform.position.y, transform.position.z + Mathf.Sqrt(Mathf.Pow(spd, 2) / 2) * Time.deltaTime);
 			}
-			if (anim.GetCurrentAnimatorStateInfo(0).IsName("testWalk"))
+			else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
 			{
-				if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
-				{
-					transform.position = new Vector3(transform.position.x - Mathf.Sqrt(Mathf.Pow(spd, 2) / 2) * Time.deltaTime, transform.position.y, transform.position.z + Mathf.Sqrt(Mathf.Pow(spd, 2) / 2) * Time.deltaTime);
-				}
-				else if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.D))
-				{
-					transform.position = new Vector3(transform.position.x + Mathf.Sqrt(Mathf.Pow(spd, 2) / 2) * Time.deltaTime, transform.position.y, transform.position.z + Mathf.Sqrt(Mathf.Pow(spd, 2) / 2) * Time.deltaTime);
-				}
-				else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
-				{
-					transform.position = new Vector3(transform.position.x - Mathf.Sqrt(Mathf.Pow(spd, 2) / 2) * Time.deltaTime, transform.position.y, transform.position.z - Mathf.Sqrt(Mathf.Pow(spd, 2) / 2) * Time.deltaTime);
-				}
-				else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
-				{
-					transform.position = new Vector3(transform.position.x + Mathf.Sqrt(Mathf.Pow(spd, 2) / 2) * Time.deltaTime, transform.position.y, transform.position.z - Mathf.Sqrt(Mathf.Pow(spd, 2) / 2) * Time.deltaTime);
-				}
-				else if (Input.GetKey(KeyCode.W))
-				{
-					transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + spd * Time.deltaTime);
-				}
-				else if (Input.GetKey(KeyCode.S))
-				{
-					transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - spd * Time.deltaTime);
-				}
-				else if (Input.GetKey(KeyCode.A))
-				{
-					transform.position = new Vector3(transform.position.x - spd * Time.deltaTime, transform.position.y, transform.position.z);
-				}
-				else if (Input.GetKey(KeyCode.D))
-				{
-					transform.position = new Vector3(transform.position.x + spd * Time.deltaTime, transform.position.y, transform.position.z);
-				}
-				else
-				{
-					anim.Play("testIdle");
-				}
+				transform.position = new Vector3(transform.position.x + Mathf.Sqrt(Mathf.Pow(spd, 2) / 2) * Time.deltaTime, transform.position.y, transform.position.z + Mathf.Sqrt(Mathf.Pow(spd, 2) / 2) * Time.deltaTime);
 			}
-
+			else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.A))
+			{
+				transform.position = new Vector3(transform.position.x - Mathf.Sqrt(Mathf.Pow(spd, 2) / 2) * Time.deltaTime, transform.position.y, transform.position.z - Mathf.Sqrt(Mathf.Pow(spd, 2) / 2) * Time.deltaTime);
+			}
+			else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
+			{
+				transform.position = new Vector3(transform.position.x + Mathf.Sqrt(Mathf.Pow(spd, 2) / 2) * Time.deltaTime, transform.position.y, transform.position.z - Mathf.Sqrt(Mathf.Pow(spd, 2) / 2) * Time.deltaTime);
+			}
+			// walking in one axis
+			else if (Input.GetKey(KeyCode.W))
+			{
+				transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + spd * Time.deltaTime);
+			}
+			else if (Input.GetKey(KeyCode.S))
+			{
+				transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - spd * Time.deltaTime);
+			}
+			else if (Input.GetKey(KeyCode.A))
+			{
+				transform.position = new Vector3(transform.position.x - spd * Time.deltaTime, transform.position.y, transform.position.z);
+			}
+			else if (Input.GetKey(KeyCode.D))
+			{
+				transform.position = new Vector3(transform.position.x + spd * Time.deltaTime, transform.position.y, transform.position.z);
+			}
+			else
+			{
+				anim.Play("testIdle");
+			}
 		}
 
 		// look at mouse pos(not changing y-axis)
-		//transform.LookAt(new Vector3(MouseManager.me.mousePos.x, transform.position.y, MouseManager.me.mousePos.z));
+		//! if this doesn't work properly, check game objects' layers, and make sure the mouse manager ignores the proper layers
 		var target = new Vector3(MouseManager.me.mousePos.x, transform.position.y, MouseManager.me.mousePos.z);
 		transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(target - transform.position), rot_spd * Time.deltaTime);
 
@@ -121,10 +87,10 @@ public class PlayerScript : MonoBehaviour
 		{
 			if (tempInventory[0].matAmounts > 0)
 			{
-				choosentMats.Add(tempInventory[0].Mats);
+				chosenMats.Add(tempInventory[0].Mats);
 				selectedMat = tempInventory[0].Mats;
-				recipeManager.SendMessage("SearchRecipeForMats", choosentMats);
-				recipeManager.SendMessage("SearchForCombinations", choosentMats);
+				recipeManager.SendMessage("SearchRecipeForMats", chosenMats);
+				recipeManager.SendMessage("SearchForCombinations", chosenMats);
 			}
 
 		}
@@ -132,54 +98,54 @@ public class PlayerScript : MonoBehaviour
 		{
 			if (tempInventory[1].matAmounts > 0)
 			{
-				choosentMats.Add(tempInventory[1].Mats);
+				chosenMats.Add(tempInventory[1].Mats);
 				selectedMat = tempInventory[1].Mats;
-				recipeManager.SendMessage("SearchRecipeForMats", choosentMats);
-				recipeManager.SendMessage("SearchForCombinations", choosentMats);
+				recipeManager.SendMessage("SearchRecipeForMats", chosenMats);
+				recipeManager.SendMessage("SearchForCombinations", chosenMats);
 			}
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha3))
 		{
 			if (tempInventory[2].matAmounts > 0)
 			{
-				choosentMats.Add(tempInventory[2].Mats);
+				chosenMats.Add(tempInventory[2].Mats);
 				selectedMat = tempInventory[2].Mats;
-				recipeManager.SendMessage("SearchRecipeForMats", choosentMats);
-				recipeManager.SendMessage("SearchForCombinations", choosentMats);
+				recipeManager.SendMessage("SearchRecipeForMats", chosenMats);
+				recipeManager.SendMessage("SearchForCombinations", chosenMats);
 			}
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha4))
 		{
 			if (tempInventory[3].matAmounts > 0)
 			{
-				choosentMats.Add(tempInventory[3].Mats);
+				chosenMats.Add(tempInventory[3].Mats);
 				selectedMat = tempInventory[3].Mats;
-				recipeManager.SendMessage("SearchRecipeForMats", choosentMats);
-				recipeManager.SendMessage("SearchForCombinations", choosentMats);
+				recipeManager.SendMessage("SearchRecipeForMats", chosenMats);
+				recipeManager.SendMessage("SearchForCombinations", chosenMats);
 			}
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha5))
 		{
 			if (tempInventory[4].matAmounts > 0)
 			{
-				choosentMats.Add(tempInventory[4].Mats);
+				chosenMats.Add(tempInventory[4].Mats);
 				selectedMat = tempInventory[4].Mats;
-				recipeManager.SendMessage("SearchRecipeForMats", choosentMats);
-				recipeManager.SendMessage("SearchForCombinations", choosentMats);
+				recipeManager.SendMessage("SearchRecipeForMats", chosenMats);
+				recipeManager.SendMessage("SearchForCombinations", chosenMats);
 			}
 		}
 	}
 
 	public void RefreshChoosenMats()
 	{
-		choosentMats.Clear();
-		choosentMats.Add(selectedMat);
+		chosenMats.Clear();
+		chosenMats.Add(selectedMat);
 	}
 
 	public void ChangeSpell(Recipe recipe)
 	{
 		currentMat = recipe.Outcome;
-		Debug.Log(currentMat.name);
+		//Debug.Log(currentMat.name);
 		requiredMats.Clear();
 		foreach (var mat in recipe.materials)
 		{
@@ -190,7 +156,7 @@ public class PlayerScript : MonoBehaviour
 	public void RefreshSpell(GameObject outcome)
 	{
 		currentMat = outcome;
-		Debug.Log(currentMat.name);
+		//Debug.Log(currentMat.name);
 		requiredMats.Clear();
 		InventoryDict inDic = new InventoryDict();
 		inDic.Mats = outcome;
@@ -257,11 +223,11 @@ public class PlayerScript : MonoBehaviour
 
 						if (i == 3)
 						{
-							choosentMats.Remove(tempInventory[i].Mats);
+							chosenMats.Remove(tempInventory[i].Mats);
 							tempInventory[i].Mats = null;
 							recipeManager.GetComponent<RecipeManagerScript>().bossMat.text = "4:None";
 							//recipeManager.SendMessage("SearchRecipeForMats", choosentMats);
-							recipeManager.SendMessage("SearchForCombinations", choosentMats);
+							recipeManager.SendMessage("SearchForCombinations", chosenMats);
 						}
 					}
 				}
