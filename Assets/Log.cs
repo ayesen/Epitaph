@@ -76,16 +76,18 @@
 
 // 10/23/21
 // combat refine
+	// put spell types params into materials
 	// xchange to windup state when moving and pressed atk
+	// cancel backswing if cast new spell
 	// drop
 		// xdrop debugging
-		// drop refining
+		// refining
 	// deal damage
-		// flash pie
+		// xflash pie
 		// refining
 	// damage avoidence
 		// gp
-		// knock back
+		// xknock back
 // xobject inspection
 	// xtext prompt
 // xobjects in level solution

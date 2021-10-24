@@ -19,14 +19,26 @@ public class AITestCTRLScript : MonoBehaviour
 	private void Update()
 	{
 		dropMeterUI.GetComponent<TextMesh>().text = eS.dropMeter.ToString();
-		if (eS.walkable)
+		if (eS.GetComponent<NavMeshAgent>().enabled)
 		{
-			agent.isStopped = false;
-			agent.destination = goal.position;
+			if (eS.walkable)
+			{
+				agent.isStopped = false;
+				agent.destination = goal.position;
+			}
+			else
+			{
+				agent.isStopped = true;
+			}
 		}
-		else
+		if (!GetComponent<Rigidbody>().isKinematic)
 		{
-			agent.isStopped = true;
+			if (GetComponent<Rigidbody>().velocity.magnitude < 0.01f &&
+				!PlayerScript.me.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("windup"))
+			{
+				GetComponent<NavMeshAgent>().enabled = true;
+				GetComponent<Rigidbody>().isKinematic = true;
+			}
 		}
 	}
 }

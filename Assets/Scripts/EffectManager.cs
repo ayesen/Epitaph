@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EffectManager : MonoBehaviour
 {
@@ -56,7 +57,6 @@ public class EffectManager : MonoBehaviour
 	{
 		if (effect.myCtrlType != CtrlTypes.none)
 		{
-			//print(target.name + " will be in " + effect.myCtrlType.ToString() + " state for " + effect.ctrl_duration + "s");
 			if (effect.myCtrlType == CtrlTypes.forceMove)
 			{
 				// knock back based on amount
@@ -114,9 +114,14 @@ public class EffectManager : MonoBehaviour
 
 	public void KnockBack(float amount, GameObject er, GameObject ee)
 	{
-		Debug.Log("this is knockback");
+		if (ee.GetComponent<NavMeshAgent>())
+		{
+			ee.GetComponent<NavMeshAgent>().enabled = false;
+			ee.GetComponent<Rigidbody>().isKinematic = false;
+		}
 		Vector3 dir = ee.transform.position - er.transform.position;
 		ee.GetComponent<Rigidbody>().AddForce(dir.normalized * amount, ForceMode.Impulse);
+		
 	}
 
 	IEnumerator ResetAttackability(float duration, GameObject target)
@@ -187,7 +192,6 @@ public class EffectManager : MonoBehaviour
 	private void SpawnMat(GameObject target, EffectStruct effect)
 	{
 		GameObject matDropped = effect.matProduce[Random.Range(0, effect.matProduce.Count)];
-		//print(target.name + " dropped " + matDropped.name);
 		Vector3 spawnPos = new Vector3(target.transform.position.x, target.transform.position.y + 0.7f, target.transform.position.z);
 		GameObject droppedMat = Instantiate(matDropped, spawnPos, Random.rotation);
 		droppedMat.GetComponent<Rigidbody>().AddForce(

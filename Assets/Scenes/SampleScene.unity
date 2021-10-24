@@ -557,7 +557,7 @@ MonoBehaviour:
   player: {fileID: 1708728301}
   goal: {fileID: 1614443459}
   enemy: {fileID: 675428768}
-  on: 0
+  on: 1
 --- !u!4 &112028153
 Transform:
   m_ObjectHideFlags: 0
@@ -2375,7 +2375,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 675428768}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.84, y: 1.5, z: -0.04}
+  m_LocalPosition: {x: -0.84, y: 2, z: -0.04}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1981161471}
@@ -2449,7 +2449,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1
-  m_BaseOffset: 0.5
+  m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!54 &675428776
@@ -2466,8 +2466,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Constraints: 80
+  m_CollisionDetection: 1
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -3052,7 +3052,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5800329985359826309, guid: 15fe43c742ecdab4b9403836ac8970ae, type: 3}
       propertyPath: matCastType
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5800329985359826309, guid: 15fe43c742ecdab4b9403836ac8970ae, type: 3}
       propertyPath: myEffects.Array.size
@@ -3060,7 +3060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5800329985359826309, guid: 15fe43c742ecdab4b9403836ac8970ae, type: 3}
       propertyPath: myEffects.Array.data[0].myCtrlType
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5800329985359826309, guid: 15fe43c742ecdab4b9403836ac8970ae, type: 3}
       propertyPath: myEffects.Array.data[1].damageAmount
@@ -3068,11 +3068,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5800329985359826309, guid: 15fe43c742ecdab4b9403836ac8970ae, type: 3}
       propertyPath: myEffects.Array.data[0].ctrl_duration
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5800329985359826309, guid: 15fe43c742ecdab4b9403836ac8970ae, type: 3}
       propertyPath: myEffects.Array.data[0].dropMatAmount
-      value: 20
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5800329985359826309, guid: 15fe43c742ecdab4b9403836ac8970ae, type: 3}
+      propertyPath: myEffects.Array.data[0].knockback_amount
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 5800329985359826309, guid: 15fe43c742ecdab4b9403836ac8970ae, type: 3}
       propertyPath: myEffects.Array.data[0].matProduce.Array.size
@@ -4787,6 +4791,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 199564424747727108, guid: 227da076e12dbfa4b990f022b9a9dc8e, type: 3}
+      propertyPath: pieAngle
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 199564424747727108, guid: 227da076e12dbfa4b990f022b9a9dc8e, type: 3}
+      propertyPath: pieRadius
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 199564424747727108, guid: 227da076e12dbfa4b990f022b9a9dc8e, type: 3}
+      propertyPath: highlightA
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 199564424747727108, guid: 227da076e12dbfa4b990f022b9a9dc8e, type: 3}
       propertyPath: targetIndicator
       value: 
       objectReference: {fileID: 1981161469}
@@ -4849,6 +4865,10 @@ PrefabInstance:
     - target: {fileID: 199564424747727130, guid: 227da076e12dbfa4b990f022b9a9dc8e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199564424747727131, guid: 227da076e12dbfa4b990f022b9a9dc8e, type: 3}
+      propertyPath: spd
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 199564424747727131, guid: 227da076e12dbfa4b990f022b9a9dc8e, type: 3}
       propertyPath: currentMat

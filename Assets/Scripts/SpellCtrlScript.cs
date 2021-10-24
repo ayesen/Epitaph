@@ -24,6 +24,8 @@ public class SpellCtrlScript : MonoBehaviour
 	public GameObject pieRangeIndicator;
 	public float pieRadius;
 	public float pieAngle;
+	private float defaultA;
+	public float highlightA;
 
 	[Header("TARGET")]
 	public GameObject targetIndicator;
@@ -44,10 +46,9 @@ public class SpellCtrlScript : MonoBehaviour
 
 	private void Start()
 	{
-		aoeOgColor = aoeRangeIndicator.GetComponent<SpriteRenderer>().color;
 		ps = gameObject.GetComponent<PlayerScript>();
-		//pieRangeIndicator.GetComponent<SpriteRenderer>().color = aoeOgColor;
 		anim = GetComponent<Animator>();
+		defaultA = pieRangeIndicator.GetComponent<Image>().color.a;
 	}
 
 	private void Update()
@@ -103,8 +104,6 @@ public class SpellCtrlScript : MonoBehaviour
 				// cast the spell
 				if (Input.GetMouseButtonDown(0) && ps.ConsumeMats())
 				{
-					//aoeRangeIndicator.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 1);
-					//StartCoroutine(ChangeToDefaultColor(aoeRangeIndicator));
 					SpawnSpell_aoe();
 				}
 			}
@@ -118,10 +117,11 @@ public class SpellCtrlScript : MonoBehaviour
 				pieRangeIndicator.GetComponent<Image>().fillAmount = 1f / 360f * pieAngle;
 				Quaternion targetAngle = Quaternion.Euler(0, 0, pieAngle / 2 - 180f);
 				pieRangeIndicator.GetComponent<RectTransform>().localRotation = targetAngle;
+				pieRangeIndicator.GetComponent<RectTransform>().localScale = new Vector3(pieRadius/3f, pieRadius/3f, 1);
 
 				if (Input.GetMouseButtonDown(0) && ps.ConsumeMats())
 				{
-					SpawnSpell_pie();
+					anim.Play("testWindup_pie");
 				}
 			}
 			else if (currentCastType == CastType.target)
@@ -175,14 +175,12 @@ public class SpellCtrlScript : MonoBehaviour
 				targetIndicator.SetActive(false);
 			}
 		}
-
-
 	}
 
-	private IEnumerator ChangeToDefaultColor(GameObject indicator)
+	private IEnumerator ChangeToDefaultColor_pie()
 	{
 		yield return new WaitForSeconds(0.05f);
-		indicator.GetComponent<SpriteRenderer>().color = aoeOgColor;
+		pieRangeIndicator.GetComponent<Image>().color = new Color(255,255,255,defaultA);
 	}
 
 	private void SpawnSpell_proj() // send out the spell
@@ -206,8 +204,10 @@ public class SpellCtrlScript : MonoBehaviour
 	private void SpawnSpell_pie() // check if enemy in pie
 	{
 		Collider[] targetsAround = Physics.OverlapSphere(transform.position, pieRadius);
+		pieRangeIndicator.GetComponent<Image>().color = new Color(255, 255, 255, highlightA);
 		foreach (var collider in targetsAround)
 		{
+			StartCoroutine(ChangeToDefaultColor_pie());
 			if (collider.gameObject.CompareTag("Enemy"))
 			{
 				Vector3 tempV3 = new Vector3(collider.transform.position.x, 0, collider.transform.position.z);
@@ -215,7 +215,6 @@ public class SpellCtrlScript : MonoBehaviour
 				{
 					//! insert effect here
 					EffectManager.me.ProcessEffects(gameObject.GetComponent<PlayerScript>().currentMat, collider.gameObject);
-					print("hit enemy with pie");
 				}
 				else
 				{
