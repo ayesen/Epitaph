@@ -76,9 +76,8 @@
 
 // 10/23/21
 // combat refine
-	// put spell types params into materials
 	// xchange to windup state when moving and pressed atk
-	// cancel backswing if cast new spell
+	// xcancel backswing if cast new spell
 	// drop
 		// xdrop debugging
 		// refining
@@ -93,3 +92,8 @@
 // xobjects in level solution
 	// xenemy knocks back objects
 	// xobjects disappear
+// xalt cam
+	// xperspective
+	// xlook at enemy
+// aoe dot and hot need to be effective only when in the aoe range
+// new effect: speed up (for dash juice G)

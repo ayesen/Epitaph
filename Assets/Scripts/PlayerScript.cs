@@ -6,6 +6,7 @@ public class PlayerScript : MonoBehaviour
 {
 	static public PlayerScript me;
 	private Animator anim;
+	public GameObject actualModel;
 	public float spd;
 	public float rot_spd;
 	public float hp;
@@ -24,7 +25,7 @@ public class PlayerScript : MonoBehaviour
 	private void Awake()
 	{
 		me = this;
-		anim = GetComponent<Animator>();
+		anim = actualModel.GetComponent<Animator>();
 	}
 
 	private void Update()
@@ -144,6 +145,7 @@ public class PlayerScript : MonoBehaviour
 
 	public void ChangeSpell(Recipe recipe)
 	{
+		SpellCtrlScript.me.lastMat = currentMat;
 		currentMat = recipe.Outcome;
 		//Debug.Log(currentMat.name);
 		requiredMats.Clear();
@@ -155,6 +157,7 @@ public class PlayerScript : MonoBehaviour
 
 	public void RefreshSpell(GameObject outcome)
 	{
+		SpellCtrlScript.me.lastMat = currentMat;
 		currentMat = outcome;
 		//Debug.Log(currentMat.name);
 		requiredMats.Clear();

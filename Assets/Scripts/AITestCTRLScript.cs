@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class AITestCTRLScript : MonoBehaviour
 {
     public Transform goal;
+	public Animator playerAnim;
 	NavMeshAgent agent;
 	Enemy eS;
 	public GameObject dropMeterUI;
@@ -34,7 +35,7 @@ public class AITestCTRLScript : MonoBehaviour
 		if (!GetComponent<Rigidbody>().isKinematic)
 		{
 			if (GetComponent<Rigidbody>().velocity.magnitude < 0.01f &&
-				!PlayerScript.me.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("windup"))
+				!playerAnim.GetCurrentAnimatorStateInfo(0).IsTag("windup"))
 			{
 				GetComponent<NavMeshAgent>().enabled = true;
 				GetComponent<Rigidbody>().isKinematic = true;
