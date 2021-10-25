@@ -84,9 +84,15 @@
 	// deal damage
 		// xflash pie
 		// refining
+		// xfreeze frame
 	// damage avoidence
 		// gp
 		// xknock back
+	// effect
+		// speed up (for dash juice G)
+		// slow down
+		// aoe dot and hot need to be effective only when in the aoe range
+		// multiple ctrl type
 // xobject inspection
 	// xtext prompt
 // xobjects in level solution
@@ -95,5 +101,3 @@
 // xalt cam
 	// xperspective
 	// xlook at enemy
-// aoe dot and hot need to be effective only when in the aoe range
-// new effect: speed up (for dash juice G)

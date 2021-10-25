@@ -43,8 +43,15 @@ public class EffectManager : MonoBehaviour
 	{
 		if (target.tag == "Enemy" && effect.damageAmount > 0)
 		{
-			//print("dealt " + effect.damageAmount + " damage to " + target.name);
 			enemyScript.LoseHealth(effect.damageAmount);
+			if (effect.freezeFrame)
+			{
+				StartCoroutine(FreezeFrame());
+			}
+			else
+			{
+				print(effect.freezeFrame);
+			}
 		}
 
         if (target.tag == "Enemy" && effect.DOT)
@@ -121,7 +128,6 @@ public class EffectManager : MonoBehaviour
 		}
 		Vector3 dir = ee.transform.position - er.transform.position;
 		ee.GetComponent<Rigidbody>().AddForce(dir.normalized * amount, ForceMode.Impulse);
-		
 	}
 
 	IEnumerator ResetAttackability(float duration, GameObject target)
@@ -199,5 +205,12 @@ public class EffectManager : MonoBehaviour
 			3,
 			Random.Range(-droppedMat_flyAmount, droppedMat_flyAmount)),
 			ForceMode.Impulse);
+	}
+
+	private IEnumerator FreezeFrame()
+	{
+		Time.timeScale = 0.01f;
+		yield return new WaitForSeconds(0.002f);
+		Time.timeScale = 1f;
 	}
 }

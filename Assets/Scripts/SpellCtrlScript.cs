@@ -119,6 +119,7 @@ public class SpellCtrlScript : MonoBehaviour
 				if (Input.GetMouseButtonDown(0) && ps.ConsumeMats())
 				{
 					SpawnSpell_aoe();
+					anim.Play("testWindup_aoe");
 				}
 			}
 			//! if cast type pie
