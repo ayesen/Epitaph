@@ -33,7 +33,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AlphaCutoff: 0.5
-    - _CellShading: 149
+    - _CellShading: 224
     - _Diffuse_Step: 2
     - _Gloss: 0.16
     m_Colors:

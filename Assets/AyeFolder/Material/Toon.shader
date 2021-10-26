@@ -839,8 +839,8 @@ Shader "Toon"
 }
 /*ASEBEGIN
 Version=18912
-2969;536;480;463;-217.7597;169.7653;1.106275;False;False
-Node;AmplifyShaderEditor.RangedFloatNode;10;-530.6802,-281.5811;Inherit;False;Property;_Thickness;Thickness;0;0;Create;True;0;0;0;False;0;False;0.1;0;0;1;0;1;FLOAT;0
+681;374;634;463;910.8397;838.871;3.119202;True;False
+Node;AmplifyShaderEditor.RangedFloatNode;10;-530.6802,-281.5811;Inherit;False;Property;_Thickness;Thickness;0;0;Create;True;0;0;0;False;0;False;0.1;0.046;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.NormalVertexDataNode;8;-473.9924,-153.7324;Inherit;False;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;13;-160.6439,-112.2519;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT3;0,0,0;False;1;FLOAT3;0
 Node;AmplifyShaderEditor.TransformPositionNode;19;-298.0711,164.7425;Inherit;False;Object;Object;False;Fast;True;1;0;FLOAT3;0,0,0;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
@@ -860,4 +860,4 @@ WireConnection;14;0;12;0
 WireConnection;34;2;11;0
 WireConnection;34;5;14;0
 ASEEND*/
-//CHKSM=8A654F465CC8FC7928A17DD1E817DE38AFC98E5E
+//CHKSM=7F64062FE86B27328BB2809B37D36E4BFAB503B3
