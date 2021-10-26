@@ -20,22 +20,28 @@ public class ObjectInspectorManagerScript : MonoBehaviour
 		objectDes_ui.gameObject.SetActive(true);
 		textBg.SetActive(true);
 		objectDes_ui.text = content;
-		textShowing = true;
-		PlayerScript.me.GetComponent<Animator>().Play("readingText");
+		PlayerScript.me.GetComponentInChildren<Animator>().Play("readingText");
+		StartCoroutine(SetTextShowingToTrue());
 	}
 
 	private void Update()
 	{
 		if (textShowing)
 		{
-			if (Input.GetKeyDown(KeyCode.E))
+			if (Input.GetKeyDown(KeyCode.E)) // hide text
 			{
 				objectDes_ui.gameObject.SetActive(false);
 				textBg.SetActive(false);
 				objectDes_ui.text = "";
 				textShowing = false;
-				PlayerScript.me.GetComponent<Animator>().Play("testIdle");
+				PlayerScript.me.GetComponentInChildren<Animator>().Play("testIdle");
 			}
 		}
+	}
+
+	IEnumerator SetTextShowingToTrue()
+	{
+		yield return new WaitForSeconds(0.1f);
+		textShowing = true;
 	}
 }

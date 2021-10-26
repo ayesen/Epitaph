@@ -37,7 +37,7 @@ public class ObjectScript : MonoBehaviour
 		{
 			mr.material = highLightMat;
 			if (Input.GetKeyDown(KeyCode.E) &&
-				player.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("testIdle"))
+				player.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("testIdle"))
 			{
 				ObjectInspectorManagerScript.me.ShowText(objectDescription);
 			}
