@@ -8,6 +8,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 611036629, guid: 18c6bf2e166e43e46a396aead726f3d8, type: 3}
+      propertyPath: spd
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 611036629, guid: 18c6bf2e166e43e46a396aead726f3d8, type: 3}
       propertyPath: matCastType
       value: 1
       objectReference: {fileID: 0}
@@ -20,12 +24,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 611036629, guid: 18c6bf2e166e43e46a396aead726f3d8, type: 3}
+      propertyPath: myEffects.Array.data[0].myCtrlType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 611036629, guid: 18c6bf2e166e43e46a396aead726f3d8, type: 3}
       propertyPath: myEffects.Array.data[0].damageAmount
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 611036629, guid: 18c6bf2e166e43e46a396aead726f3d8, type: 3}
       propertyPath: myEffects.Array.data[1].damageAmount
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 611036629, guid: 18c6bf2e166e43e46a396aead726f3d8, type: 3}
+      propertyPath: myEffects.Array.data[0].ctrl_duration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 611036629, guid: 18c6bf2e166e43e46a396aead726f3d8, type: 3}
+      propertyPath: myEffects.Array.data[0].knockback_amount
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 611036629, guid: 18c6bf2e166e43e46a396aead726f3d8, type: 3}
       propertyPath: myEffects.Array.data[0].matProduce.Array.size
@@ -35,13 +51,25 @@ PrefabInstance:
       propertyPath: myEffects.Array.data[0].matProduce.Array.data[0]
       value: 
       objectReference: {fileID: 4925269295210593759, guid: c668315f111e89941b191a7ce2a2c1f6, type: 3}
+    - target: {fileID: 4250870224981592407, guid: 18c6bf2e166e43e46a396aead726f3d8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 36eb1215e899be246a345a35363d2670, type: 2}
+    - target: {fileID: 4365571627874676338, guid: 18c6bf2e166e43e46a396aead726f3d8, type: 3}
+      propertyPath: m_Mass
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5363780074866141289, guid: 18c6bf2e166e43e46a396aead726f3d8, type: 3}
       propertyPath: m_Name
       value: Match - Low Damage Bullet
       objectReference: {fileID: 0}
     - target: {fileID: 5363780074866141289, guid: 18c6bf2e166e43e46a396aead726f3d8, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363780074866141289, guid: 18c6bf2e166e43e46a396aead726f3d8, type: 3}
+      propertyPath: m_TagString
+      value: DroppedMat
       objectReference: {fileID: 0}
     - target: {fileID: 5363780074866141291, guid: 18c6bf2e166e43e46a396aead726f3d8, type: 3}
       propertyPath: namae

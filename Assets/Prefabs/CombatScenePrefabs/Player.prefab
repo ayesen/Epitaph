@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 397684480}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: CamTaret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,9 @@ GameObject:
   - component: {fileID: 199564423550319233}
   - component: {fileID: 199564423550319232}
   - component: {fileID: 199564423550319239}
-  m_Layer: 6
+  - component: {fileID: 705393197}
+  - component: {fileID: 705393193}
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,6 +85,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -91,7 +94,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: b0c23b2b9f204134b8c5b72740e3ab24, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -127,6 +130,48 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &705393197
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199564423550319237}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b754cecf40257c7418dc3c8f0c39f3e7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &705393193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199564423550319237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84b281f3bd775bd4fa6db728b4cce8ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actualModel: {fileID: 199564423550319237}
+  spellSpawnLoc: {fileID: 199564424472730207}
+  spell_proj_prefab: {fileID: 4131094066971217825, guid: b3c70bdbb6a17584e9690c00604c0ada, type: 3}
+  spell_AOE_prefab: {fileID: 1501126100792903113, guid: 6c07d56dfc4c98e428f55925e00ae51c, type: 3}
+  aoeRangeIndicator: {fileID: 0}
+  pieRangeIndicator: {fileID: 199564424247961325}
+  highlightA: 0.5
+  targetIndicator: {fileID: 0}
+  selfIndicator: {fileID: 199564424518589431}
+  lastMat: {fileID: 0}
+  currentCastType: 0
 --- !u!1 &199564423692395267
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +184,7 @@ GameObject:
   - component: {fileID: 199564423692395279}
   - component: {fileID: 199564423692395278}
   - component: {fileID: 199564423692395277}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas-Pie Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -238,7 +283,7 @@ GameObject:
   - component: {fileID: 199564424247961320}
   - component: {fileID: 199564424247961327}
   - component: {fileID: 199564424247961326}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,7 +330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.03529412}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -314,7 +359,7 @@ GameObject:
   - component: {fileID: 199564424472730202}
   - component: {fileID: 199564424472730201}
   - component: {fileID: 199564424472730200}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,6 +399,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -362,7 +408,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: b0c23b2b9f204134b8c5b72740e3ab24, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -407,13 +453,13 @@ GameObject:
   m_Component:
   - component: {fileID: 199564424518589424}
   - component: {fileID: 199564424518589425}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Self Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &199564424518589424
 Transform:
   m_ObjectHideFlags: 0
@@ -485,7 +531,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 6.59e-43, y: -1.0066927e-15, z: 4.5905e-41, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -503,9 +549,8 @@ GameObject:
   - component: {fileID: 199564424747727131}
   - component: {fileID: 199564424747727109}
   - component: {fileID: 199564424747727110}
-  - component: {fileID: 1708728302}
   - component: {fileID: 8117775618717218345}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -537,24 +582,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 199564424747727129}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84b281f3bd775bd4fa6db728b4cce8ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ps: {fileID: 199564424747727131}
+  actualModel: {fileID: 199564423550319237}
   spellSpawnLoc: {fileID: 199564424472730207}
   spell_proj_prefab: {fileID: 4131094066971217825, guid: b3c70bdbb6a17584e9690c00604c0ada, type: 3}
-  spellSpd: 10
   spell_AOE_prefab: {fileID: 1501126100792903113, guid: 6c07d56dfc4c98e428f55925e00ae51c, type: 3}
   aoeRangeIndicator: {fileID: 0}
-  aoeDistance: 4
-  aoeRadius: 90
   pieRangeIndicator: {fileID: 199564424247961325}
-  pieRadius: 4
-  pieAngle: 90
+  highlightA: 0.5
   targetIndicator: {fileID: 0}
   selfIndicator: {fileID: 199564424518589431}
+  lastMat: {fileID: 0}
   currentCastType: 0
 --- !u!114 &199564424747727131
 MonoBehaviour:
@@ -568,26 +610,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9767fad848076fb44ad2d60da910bc76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actualModel: {fileID: 199564423550319237}
   spd: 4
   rot_spd: 4
   hp: 30
   currentMat: {fileID: 0}
   requiredMats: []
   recipeManager: {fileID: 0}
-  tear: {fileID: 0}
-  cotton: {fileID: 0}
+  tear: {fileID: 8441474695682364324, guid: 212051402683f614781bcf259e7847f1, type: 3}
+  cotton: {fileID: 2429920367318801475, guid: 246cc5031e223c548b132211d37c5988, type: 3}
   tempInventory:
+  - Mats: {fileID: 1478154070093566531, guid: 699134f854649d041b639287d52979e4, type: 3}
+    matAmounts: 5
+  - Mats: {fileID: 4380351066936016701, guid: 625161a5ab7fc944baf5ffd2d1fdae1b, type: 3}
+    matAmounts: 5
+  - Mats: {fileID: 3072454774791025738, guid: b10d6266975052a4db91d28b836a1a6f, type: 3}
+    matAmounts: 5
   - Mats: {fileID: 0}
     matAmounts: 0
-  - Mats: {fileID: 0}
-    matAmounts: 0
-  - Mats: {fileID: 0}
-    matAmounts: 0
-  - Mats: {fileID: 0}
-    matAmounts: 0
-  - Mats: {fileID: 0}
-    matAmounts: 0
-  choosentMats: []
+  chosenMats: []
 --- !u!136 &199564424747727109
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -618,25 +659,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!95 &1708728302
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 199564424747727129}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b754cecf40257c7418dc3c8f0c39f3e7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!135 &8117775618717218345
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -648,5 +670,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 6
   m_Center: {x: 0, y: 0, z: 0}

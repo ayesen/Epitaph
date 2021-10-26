@@ -15,7 +15,7 @@ public class SpellScript : MonoBehaviour
 		{
 			//! effect here
 			EffectManager.me.ProcessEffects(mat, collision.gameObject);
-			print("hit enemy with a projectile");
+			//print("hit enemy with a projectile");
 		}
 		if (!collision.gameObject.CompareTag("Player"))
 		{
