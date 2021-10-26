@@ -93,7 +93,10 @@ public class RecipeManagerScript : MonoBehaviour
                     //谜之bug用了魔法解决问题...我真的不行了
                     if (player.GetComponent<PlayerScript>().currentMat.name == "Explosion Spell - High Damage & DOT Spell")
                     {
-                        possibleCombinations.RemoveAt(0);
+                        if (possibleCombinations.Count > 0)
+						{
+                            possibleCombinations.RemoveAt(0);
+                        }
                     }
                 }
             }
