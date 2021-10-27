@@ -10,9 +10,15 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/HarryFolder/Narrative/MonoBehavior.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/HarryFolder/Narrative/NarrativeTrigger.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/ObjectInspectorManagerScript.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/ObjectScript.cs" />
+      <option value="$PROJECT_DIR$/Assets/HarryFolder/Narrative/MonoBehavior.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="2016QWPEMVJJZS7kYJPt99EUiaq" />
@@ -64,7 +70,8 @@
       <updated>1635199733556</updated>
       <workItem from="1635199742018" duration="1216000" />
       <workItem from="1635206625003" duration="1469000" />
-      <workItem from="1635282157324" duration="886000" />
+      <workItem from="1635282157324" duration="6271000" />
+      <workItem from="1635290122345" duration="3254000" />
     </task>
     <servers />
   </component>

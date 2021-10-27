@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,15 +17,20 @@ public class ObjectScript : MonoBehaviour
 	private Material defaultMat;
 	public Material highLightMat;
 	public float inspectionRange;
+	private bool inspected;
 	private MeshRenderer mr;
+	public bool isSwitch;
+	public GameObject[] interactiveSwitch;
 	[TextArea]
-	public string objectDescription;
+	public List<string> objectDescription;
 
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody>();
 		mr = GetComponent<MeshRenderer>();
 		defaultMat = mr.material;
+		inspected = false;
+		
 	}
 
 	private void Update()
@@ -33,13 +39,20 @@ public class ObjectScript : MonoBehaviour
 		{
 			Sinking();
 		}
-		if (player != null && Vector3.Distance(player.transform.position, transform.position) < inspectionRange)
+		if (player != null && Vector3.Distance(player.transform.position, transform.position) < inspectionRange &&
+		    !inspected)
 		{
 			mr.material = highLightMat;
 			if (Input.GetKeyDown(KeyCode.E) &&
 				player.GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).IsName("testIdle"))
 			{
+				inspected = true;
+				mr.enabled = false;
 				ObjectInspectorManagerScript.me.ShowText(objectDescription);
+				foreach (GameObject interactable in interactiveSwitch)
+				{
+					interactable.SetActive(true);
+				}
 			}
 		}
 		else
