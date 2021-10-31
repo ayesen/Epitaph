@@ -19,6 +19,7 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs: []
+    m_Ints: []
     m_Floats:
     - _AlphaCutoff: 0.5
     - _Thickness: 0.04
